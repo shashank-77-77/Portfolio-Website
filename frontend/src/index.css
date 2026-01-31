@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   DESIGN TOKENS / THEME FOUNDATION
+   ========================================================= */
+:root {
+  --brand: #2563eb;
+  --brand-hover: #1e40af;
+  --brand-soft: rgba(37, 99, 235, 0.12);
+
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-muted: #f1f5f9;
+
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+
+  --border-soft: #e5e7eb;
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+
+  --shadow-xs: 0 2px 8px rgba(0,0,0,.04);
+  --shadow-sm: 0 4px 14px rgba(0,0,0,.06);
+  --shadow-md: 0 10px 30px rgba(0,0,0,.08);
+}
+
+/* =========================================================
+   BASE OVERRIDES
+   ========================================================= */
+body {
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+.custom-input {
+  @apply bg-gray-100 rounded-xl px-5 py-2
+    border border-transparent
+    focus:border-blue-600
+    focus:ring-2 focus:ring-blue-200
+    focus:outline-none
+    text-black placeholder:text-gray-500
+    font-medium
+    transition-all duration-200
+    md:w-72 lg:w-[340px];
+}
+
+/* =========================================================
+   AUTH BUTTON (LOGIN / REGISTER)
+   ========================================================= */
+.auth-btn {
+  @apply px-24 md:px-[118px] lg:px-[140px]
+    py-2 rounded-xl
+    text-white font-medium
+    bg-gradient-to-r from-blue-500 to-cyan-400
+    shadow-md
+    hover:from-blue-600 hover:to-cyan-500
+    hover:shadow-lg
+    active:scale-[0.98]
+    transition-all duration-200
+    m-2 mb-6;
+}
+
+/* =========================================================
+   GLOBAL BUTTON SYSTEM (SAFE – NO HARD OVERRIDE)
+   ========================================================= */
+.btn {
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--brand);
+  color: white;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--brand-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(37,99,235,.35);
+}
+
+.btn-primary:active {
+  transform: scale(.97);
+}
+
+.btn-primary:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* =========================================================
+   CARD SYSTEM (POSTS / PROFILE / CHAT)
+   ========================================================= */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--shadow-md);
+}
+
+/* =========================================================
+   AI VISUAL IDENTITY
+   ========================================================= */
+.ai-chat-box {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  background: linear-gradient(180deg,#fafafa,#f8fafc);
+}
+
+.ai-reply {
+  margin-top: 10px;
+  background: var(--bg-muted);
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.ai-badge {
+  display: inline-block;
+  background: linear-gradient(135deg,#6366f1,#22d3ee);
+  color: white;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* =========================================================
+   SKELETON LOADERS (FEED / CHAT / PROFILE)
+   ========================================================= */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f1f5f9 25%,
+    #e2e8f0 37%,
+    #f1f5f9 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 12px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* =========================================================
+   FEED LAYOUT
+   ========================================================= */
+.feed {
+  max-width: 520px;
+  margin: auto;
+  padding: 16px;
+}
+
+@media (max-width: 640px) {
+  .feed {
+    padding: 8px;
+  }
+}
+
+/* =========================================================
+   MESSAGE BUBBLES (CHAT)
+   ========================================================= */
+.message {
+  max-width: 70%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  margin-bottom: 8px;
+  word-wrap: break-word;
+}
+
+.message.own {
+  background: var(--brand);
+  color: white;
+  margin-left: auto;
+}
+
+.message.other {
+  background: var(--bg-muted);
+  color: var(--text-primary);
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+.nav-item {
+  padding: 8px;
+  border-radius: 14px;
+  transition: all .2s ease;
+}
+
+.nav-item.active {
+  background: var(--brand-soft);
+  color: var(--brand);
+}
